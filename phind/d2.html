@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Shopping Site</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul li {
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #007bff;
+        }
+
+        /* Header Section */
+        header {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1507679735081-c1d075ddf3af');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Search Section */
+        .search-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .buy-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        footer div {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">E-Shop</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to Our Store</h1>
+        <p>Discover amazing products at great prices!</p>
+    </header>
+
+    <!-- Search and Filters Section -->
+    <section class="search-section">
+        <input type="text" placeholder="Search products...">
+        
+        <div class="filters">
+            <select>
+                <option value="">Sort By</option>
+                <option value="price">Price</option>
+                <option value="rating">Rating</option>
+                <option value="newest">Newest First</option>
+            </select>
+
+            <select>
+                <option value="">Category</option>
+                <option value="electronics">Electronics</option>
+                <option value="clothing">Clothing</option>
+                <option value="books">Books</option>
+            </select>
+
+            <select>
+                <option value="">Price Range</option>
+                <option value="low-high">$0-$50</option>
+                <option value="medium-high">$50-$200</option>
+                <option value="high">>$200</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <main class="products-grid">
+        <!-- Product Card Example -->
+        <article class="product-card">
+            <div class="product-image">📱</div>
+            <div class="product-info">
+                <h2 class="product-title">Smartphone X</h2>
+                <p class="product-price">$599.99</p>
+                <p class="product-description">Latest smartphone model with advanced camera system...</p>
+                <button class="buy-button">Add to Cart</button>
+            </div>
+        </article>
+
+        <!-- Additional Product Cards -->
+        <article class="product-card">
+            <div class="product-image">📚</div>
+            <div class="product-info">
+                <h2 class="product-title">Bestseller Book</h2>
+                <p class="product-price">$24.99</p>
+                <p class="product-description">Award-winning novel by acclaimed author...</p>
+                <button class="buy-button">Add to Cart</button>
+            </div>
+        </article>
+
+        <article class="product-card">
+            <div class="product-image">🎧</div>
+            <div class="product-info">
+                <h2 class="product-title">Wireless Headphones</h2>
+                <p class="product-price">$149.99</p>
+                <p class="product-description">Premium wireless headphones with noise cancellation...</p>
+                <button class="buy-button">Add to Cart</button>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <p>© 2025 E-Shop. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms & Conditions</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Search filter functionality
+            const searchInput = document.querySelector('input[type="text"]');
+            const products = document.querySelectorAll('.product-card');
+            
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                
+                products.forEach(product => {
+                    const title = product.querySelector('.product-title').textContent.toLowerCase();
+                    const description = product.querySelector('.product-description').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+
+            // Sort functionality
+            const sortSelect = document.querySelector('select:nth-child(2)');
+            
+            sortSelect.addEventListener('change', function(e) {
+                const sortBy = e.target.value;
+                const prices = Array.from(products).map(product => ({
+                    element: product,
+                    price: parseFloat(product.querySelector('.product-price').textContent.replace('$', '').replace(',', ''))
+                }));
+
+                switch(sortBy) {
+                    case 'price':
+                        prices.sort((a, b) => a.price - b.price);
+                        break;
+                    case 'rating':
+                        // Add rating sorting logic here
+                        break;
+                    case 'newest':
+                        // Add newest first logic here
+                        break;
+                }
+
+                prices.forEach(item => {
+                    item.element.remove();
+                });
+
+                prices.forEach(item => {
+                    document.querySelector('.products-grid').appendChild(item.element);
+                });
+            });
+
+            // Price range filtering
+            const priceRangeSelect = document.querySelector('select:nth-child(3)');
+            
+            priceRangeSelect.addEventListener('change', function(e) {
+                const range = e.target.value;
+                const ranges = {
+                    'low-high': { min: 0, max: 50 },
+                    'medium-high': { min: 50, max: 200 },
+                    'high': { min: 200, max: Infinity }
+                };
+
+                const selectedRange = ranges[range];
+                
+                products.forEach(product => {
+                    const price = parseFloat(product.querySelector('.product-price').textContent.replace('$', '').replace(',', ''));
+                    if (price >= selectedRange.min && price <= selectedRange.max) {
