@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious Restaurant</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        nav {
+            background: #2c3e50;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #3498db;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/random/1920x1080/?restaurant');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: rgba(0,0,0,0.5);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+        }
+        
+        .hero-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: transform 0.3s;
+        }
+        
+        .hero-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .menu-section {
+            padding: 5rem 2rem;
+            background: #f9f9f9;
+        }
+        
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .dish-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .dish-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .dish-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .dish-info {
+            padding: 1.5rem;
+        }
+        
+        .ingredients-list {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .ingredient-item {
+            background: #eee;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: #3498db;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+        
+        footer {
+            background: #2c3e50;
+            padding: 3rem 2rem;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <div>
+            <h1>Welcome to Delicious Restaurant</h1>
+            <button class="hero-btn">Order Now</button>
+        </div>
+    </header>
+
+    <section class="menu-section" id="menu">
+        <div class="menu-container">
+            <!-- Appetizers -->
+            <article class="dish-card">
+                <img src="https://source.unsplash.com/random/400x300/?salad" alt="Fresh Garden Salad" class="dish-img">
+                <div class="dish-info">
+                    <h2>Fresh Garden Salad</h2>
+                    <ul class="ingredients-list">
+                        <li class="ingredient-item">Mixed Greens</li>
+                        <li class="ingredient-item">Cherry Tomatoes</li>
+                        <li class="ingredient-item">Cucumber</li>
+                        <li class="ingredient-item">Carrots</li>
+                    </ul>
+                    <p class="price">$12.99</p>
+                </div>
+            </article>
+
+            <!-- Main Course -->
+            <article class="dish-card">
+                <img src="https://source.unsplash.com/random/400x300/?pizza" alt="Margherita Pizza" class="dish-img">
+                <div class="dish-info">
+                    <h2>Margherita Pizza</h2>
+                    <ul class="ingredients-list">
+                        <li class="ingredient-item">Fresh Mozzarella</li>
+                        <li class="ingredient-item">San Marzano Tomatoes</li>
+                        <li class="ingredient-item">Basil Leaves</li>
+                        <li class="ingredient-item">Extra Virgin Olive Oil</li>
+                    </ul>
+                    <p class="price">$16.99</p>
+                </div>
+            </article>
+
+            <!-- Dessert -->
+            <article class="dish-card">
+                <img src="https://source.unsplash.com/random/400x300/?dessert" alt="Chocolate Lava Cake" class="dish-img">
+                <div class="dish-info">
+                    <h2>Chocolate Lava Cake</h2>
+                    <ul class="ingredients-list">
+                        <li class="ingredient-item">Dark Chocolate</li>
+                        <li class="ingredient-item">Vanilla Ice Cream</li>
+                        <li class="ingredient-item">Caramel Sauce</li>
+                    </ul>
+                    <p class="price">$8.99</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2025 Delicious Restaurant. All rights reserved.</p>
+        <p>Contact us: <a href="mailto:info@deliciousrestaurant.com" style="color:white;">info@deliciousrestaurant.com</a></p>
+    </footer>
+
+    <script>
+        // Smooth scrolling navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Menu filtering functionality
+        const menuFilterButtons = document.createElement('div');
+        menuFilterButtons.className = 'menu-filters';
+        menuFilterButtons.innerHTML = `
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="appetizers">Appetizers</button>
+            <button class="filter-btn" data-filter="main-course">Main Course</button>
+            <button class="filter-btn" data-filter="desserts">Desserts</button>
+        `;
+        
+        document.querySelector('.menu-section').prepend(menuFilterButtons);
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                const dishes = document.querySelectorAll('.dish-card');
+
+                dishes.forEach(dish => {
+                    if (filter === 'all' || dish.dataset.category === filter) {
+                        dish.style.display = 'block';
+                    } else {
+                        dish.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Add categories to dishes
+        document.querySelectorAll('.dish-card').forEach((card, index) => {
+            const categories = ['appetizers', 'main-course', 'desserts'];
+            card.dataset.category = categories[index % categories.length];
+        });
+    </script>
+</body>
+</html>

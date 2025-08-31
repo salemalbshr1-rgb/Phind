@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious Fast Food Center</title>
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #ff6b00;
+            --secondary-color: #333;
+            --background-light: #f5f5f5;
+            --text-dark: #222;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-light);
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                            url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-content {
+            padding: 1.5rem;
+        }
+
+        .menu-content h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .price-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 4rem 2rem;
+            background-color: white;
+            max-width: 1200px;
+            margin: 2rem auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-top: 56.25%;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Search Form */
+        .search-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            nav ul li {
+                margin-left: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <h1>Delicious Fast Food</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>Welcome to Delicious Fast Food</h1>
+            <p>Experience the taste of quality food</p>
+            <button class="btn">Order Now</button>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <h2>Our Popular Items</h2>
+        <div class="menu-grid">
+            <article class="menu-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd" alt="Cheeseburger" class="menu-image">
+                <div class="menu-content">
+                    <h3>Cheeseburger Supreme</h3>
+                    <p>Juicy beef patty topped with melted cheese, crispy bacon, lettuce, tomato, and our signature sauce.</p>
+                    <div class="price-btn">
+                        <span>$12.99</span>
+                        <button class="btn">Add to Cart</button>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="menu-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd" alt="Chicken Wings" class="menu-image">
+                <div class="menu-content">
+                    <h3>Spicy Chicken Wings</h3>
+                    <p>Crispy fried chicken wings tossed in your choice of sauce: BBQ, Buffalo, or Honey Mustard.</p>
+                    <div class="price-btn">
+                        <span>$14.99</span>
+                        <button class="btn">Add to Cart</button>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="about" class="video-section">
+        <h2>About Our Kitchen</h2>
+        <div class="video-wrapper">
+            <iframe 
+                width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                title="Kitchen Tour" 
+                frameborder="0" 
+                allowfullscreen
+            ></iframe>
+        </div>
+    </section>
+
+    <!-- Contact/Search Form -->
+    <section id="contact" class="search-form">
+        <h2>Contact Us / Order Online</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="order">Order Details:</label>
+                <textarea id="order" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn">Submit Order</button>
+        </form>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your order! We will contact you soon.');
+        });
+
+        // Navigation smooth scrolling
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 64,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Gallery</title>
+    <style>
+        /* Modern CSS Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .gallery {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .content {
+            padding: 1.5rem;
+        }
+
+        .content h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Interactive Gallery</h1>
+        <p>A collection of beautiful images</p>
+    </header>
+
+    <main class="gallery">
+        <!-- Card 1 -->
+        <div class="card">
+            <img src="https://picsum.photos/400/300?random=1" alt="Nature Scene">
+            <div class="content">
+                <h2>Nature's Beauty</h2>
+                <p>Explore the wonders of the natural world.</p>
+                <a href="#" class="btn">View More</a>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <img src="https://picsum.photos/400/300?random=2" alt="City Life">
+            <div class="content">
+                <h2>Urban Adventures</h2>
+                <p>Discover the rhythm of city life.</p>
+                <a href="#" class="btn">View More</a>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <img src="https://picsum.photos/400/300?random=3" alt="Artistic View">
+            <div class="content">
+                <h2>Artistic Expressions</h2>
+                <p>A showcase of creative vision.</p>
+                <a href="#" class="btn">View More</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Add smooth scrolling to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = btn.getAttribute('href');
+                document.querySelector(target).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add card hover effects
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

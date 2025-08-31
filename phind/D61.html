@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Chess Game</title>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        
+        .board {
+            display: grid;
+            grid-template-columns: repeat(8, 60px);
+            gap: 1px;
+            background: #333;
+            padding: 1px;
+            margin: 20px auto;
+        }
+        
+        .square {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+        
+        .light {
+            background: #f0d9b5;
+        }
+        
+        .dark {
+            background: #b58863;
+        }
+        
+        .selected {
+            background: #90EE90;
+        }
+        
+        .valid-move {
+            background: #FFB6C1;
+        }
+        
+        .piece {
+            cursor: move;
+        }
+        
+        .status {
+            margin: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .reset-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        .reset-button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chess Game</h1>
+        <div id="board" class="board"></div>
+        <div id="status" class="status">Turn: White</div>
+        <button id="resetButton" class="reset-button">Reset Game</button>
+    </div>
+
+    <script>
+        class ChessGame {
+            constructor() {
+                this.board = Array(8).fill().map(() => Array(8).fill(null));
+                this.currentPlayer = 'white';
+                this.selectedSquare = null;
+                this.validMoves = [];
+                this.initializeBoard();
+                this.setupEventListeners();
+            }
+
+            initializeBoard() {
+                // Pawns
+                for(let i = 0; i < 8; i++) {
+                    this.board[1][i] = { type: 'pawn', color: 'white' };
+                    this.board[6][i] = { type: 'pawn', color: 'black' };
+                }
+
+                // Other pieces
+                const pieces = ['rook', 'knight', 'bishop', 'queen', 'king', 'bishop', 'knight', 'rook'];
+                
+                for(let i = 0; i < 8; i++) {
+                    this.board[0][i] = { type: pieces[i], color: 'white' };
+                    this.board[7][i] = { type: pieces[i], color: 'black' };
+                }
+
+                this.renderBoard();
+            }
+
+            renderBoard() {
+                const boardElement = document.getElementById('board');
+                boardElement.innerHTML = '';
+                
+                for(let row = 0; row < 8; row++) {
+                    for(let col = 0; col < 8; col++) {
+                        const square = document.createElement('div');
+                        square.className = `square ${row % 2 === col % 2 ? 'light' : 'dark'} ${this.selectedSquare && 
+                            this.selectedSquare.row === row && this.selectedSquare.col === col ? 'selected' : ''}`;
+                        
+                        if(this.validMoves.some(move => move.row === row && move.col === col)) {
+                            square.classList.add('valid-move');
+                        }
+
+                        const piece = this.board[row][col];
+                        if(piece) {
+                            square.innerHTML = this.getPieceSymbol(piece);
+                            square.classList.add('piece');
+                        }
+
+                        square.addEventListener('click', () => this.handleMove(row, col));
+                        boardElement.appendChild(square);
+                    }
+                }
+            }
+
+            getPieceSymbol(piece) {
+                const symbols = {
+                    king: '♔',
+                    queen: '♕',
+                    rook: '♖',
+                    bishop: '♗',
+                    knight: '♘',
+                    pawn: '♙'
+                };
+                return piece.color === 'white' ? symbols[piece.type] : symbols[piece.type].toLowerCase();
+            }
+
+            handleMove(row, col) {
+                if(this.selectedSquare) {
+                    if(this.isValidMove(this.selectedSquare.row, this.selectedSquare.col, row, col)) {
+                        this.makeMove(this.selectedSquare.row, this.selectedSquare.col, row, col);
+                        this.switchPlayer();
+                    }
+                    this.deselectSquare();
+                } else {
+                    this.selectSquare(row, col);
+                }
+            }
+
+            selectSquare(row, col) {
+                if(!this.board[row][col] || this.board[row][col].color !== this.currentPlayer) {
+                    return;
+                }
+                this.selectedSquare = { row, col };
+                this.validMoves = this.getValidMoves(row, col);
+                this.renderBoard();
+            }
+
+            deselectSquare() {
+                this.selectedSquare = null;
+                this.validMoves = [];
+                this.renderBoard();
+            }
+
+            isValidMove(fromRow, fromCol, toRow, toCol) {
+                if(toRow < 0 || toRow >= 8 || toCol < 0 || toCol >= 8) return false;
+                if(this.board[toRow][toCol] && this.board[toRow][toCol].color === this.currentPlayer) return false;
+                return this.validMoves.some(move => move.row === toRow && move.col === toCol);
+            }
+
+            makeMove(fromRow, fromCol, toRow, toCol) {
+                this.board[toRow][toCol] = this.board[fromRow][fromCol];
+                this.board[fromRow][fromCol] = null;
+            }
+
+            switchPlayer() {
+                this.currentPlayer = this.currentPlayer === 'white' ? 'black' : 'white';
+                document.getElementById('status').textContent = `Turn: ${this.currentPlayer.charAt(0).toUpperCase() + this.currentPlayer.slice(1)}`;
+            }
+
+            setupEventListeners() {
+                document.getElementById('resetButton').addEventListener('click', () => {
+                    location.reload();
+                });
+            }
+        }
+
+        // Initialize game when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            new ChessGame();
+        });
+    </script>
+</body>
+</html>

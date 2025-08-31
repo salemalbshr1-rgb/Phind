@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Demo Website</title>
+    
+    <!-- Internal CSS -->
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigation bar */
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        /* Main content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* Section styling */
+        section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Form styling */
+        form {
+            display: grid;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f5f5f5;
+        }
+
+        /* Media queries */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header section -->
+    <header>
+        <h1>Welcome to Our Interactive Website</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main class="container">
+        <!-- Article section -->
+        <article>
+            <h2>About Our Company</h2>
+            <p>Welcome to our interactive demo website! This site showcases various HTML elements and features modern web design practices.</p>
+            
+            <!-- Image demonstration -->
+            <figure>
+                <img src="https://picsum.photos/800/400" alt="Sample landscape photo" style="max-width: 100%; height: auto;">
+                <figcaption>A beautiful landscape showing nature's splendor</figcaption>
+            </figure>
+        </article>
+
+        <!-- Video section -->
+        <section>
+            <h3>Watch Our Story</h3>
+            <video controls width="100%" height="auto">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <!-- Audio section -->
+        <section>
+            <h3>Listen to Our Theme Song</h3>
+            <audio controls>
+                <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+                Your browser does not support the audio element.
+            </audio>
+        </section>
+
+        <!-- Form section -->
+        <section>
+            <h3>Contact Us</h3>
+            <form id="contactForm">
+                <fieldset>
+                    <legend>Contact Information</legend>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="subject">Subject:</label>
+                    <select id="subject" name="subject">
+                        <option value="">Select a subject</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="support">Support</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <button type="submit">Send Message</button>
+                </fieldset>
+            </form>
+        </section>
+
+        <!-- Table section -->
+        <section>
+            <h3>Our Services</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Web Development</td>
+                        <td>Custom website creation</td>
+                        <td>$999</td>
+                    </tr>
+                    <tr>
+                        <td>UI/UX Design</td>
+                        <td>User interface design</td>
+                        <td>$799</td>
+                    </tr>
+                    <tr>
+                        <td>Digital Marketing</td>
+                        <td>Online marketing solutions</td>
+                        <td>$699</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Lists section -->
+        <section>
+            <h3>Features & Benefits</h3>
+            <div class="lists-container">
+                <div class="unordered-list">
+                    <h4>Key Features</h4>
+                    <ul>
+                        <li>Responsive Design</li>
+                        <li>Modern UI/UX</li>
+                        <li>Cross-browser Compatibility</li>
+                        <li>Accessibility Support</li>
+                    </ul>
+                </div>
+
+                <div class="ordered-list">
+                    <h4>Benefits</h4>
+                    <ol>
+                        <li>Improved User Experience</li>
+                        <li>Enhanced Brand Visibility</li>
+                        <li>Better Conversion Rates</li>
+                        <li>Competitive Advantage</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sidebar (Aside) -->
+    <aside class="container">
+        <h3>Latest Updates</h3>
+        <ul>
+            <li>New feature released!</li>
+            <li>Updated documentation</li>
+            <li>Security improvements</li>
+        </ul>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="container">
+        <div class="footer-content">
+            <p>&copy; 2025 Demo Website. All rights reserved.</p>
+            <p>Created with love by <span>Phind</span></p>
+        </div>
+    </footer>
+
+    <!-- Internal JavaScript -->
+    <script>
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message!');
+        });
+
+        // Add smooth scrolling to navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

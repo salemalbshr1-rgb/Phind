@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewelry Store</title>
+    <style>
+        :root {
+            --primary-color: #333;
+            --secondary-color: #666;
+            --accent-color: #ffd700;
+            --background-color: #f5f5f5;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            color: white;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        /* Filter Bar Styles */
+        .filter-bar {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .filter-group {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        select, input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-left: 8px;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: #f0f0f0;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-title {
+            margin: 0 0 10px 0;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .product-price {
+            color: var(--accent-color);
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .special-tag {
+            background: var(--accent-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-top: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Luxury Jewelry Collection</h1>
+        <p>Explore our finest pieces</p>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="container">
+        <div class="filter-bar">
+            <div class="filter-group">
+                <label>Sort by:</label>
+                <select id="sortFilter">
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="name-asc">Name: A-Z</option>
+                    <option value="name-desc">Name: Z-A</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Search:</label>
+                <input type="text" id="searchInput" placeholder="Enter keyword...">
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="productsGrid"></div>
+    </div>
+
+    <script>
+        // Sample product data
+        const products = [
+            {
+                id: 1,
+                name: "Diamond Necklace",
+                price: 2999,
+                description: "18k gold necklace with certified diamonds",
+                imageUrl: "https://images.unsplash.com/photo-1519741497674-611481863552",
+                category: "necklaces",
+                isSpecial: true
+            },
+            {
+                id: 2,
+                name: "Ruby Earrings",
+                price: 899,
+                description: "Sterling silver earrings with natural rubies",
+                imageUrl: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+                category: "earrings",
+                isSpecial: false
+            },
+            {
+                id: 3,
+                name: "Gold Ring",
+                price: 599,
+                description: "Solid 14k gold ring with intricate details",
+                imageUrl: "https://images.unsplash.com/photo-1470229722913-7c0e2db88dff",
+                category: "rings",
+                isSpecial: true
+            }
+        ];
+
+        // Product management class
+        class JewelryStore {
+            constructor(products) {
+                this.products = products;
+                this.filteredProducts = [...products];
+                this.init();
+            }
+
+            init() {
+                this.renderProducts();
+                this.setupEventListeners();
+            }
+
+            renderProducts() {
+                const grid = document.getElementById('productsGrid');
+                grid.innerHTML = '';
+                
+                this.filteredProducts.forEach(product => {
+                    const card = this.createProductCard(product);
+                    grid.appendChild(card);
+                });
+            }
+
+            createProductCard(product) {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                
+                card.innerHTML = `
+                    <img src="${product.imageUrl}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <p class="product-price">$${product.price.toLocaleString()}</p>
+                        ${product.isSpecial ? '<span class="special-tag">Special Item</span>' : ''}
+                    </div>
+                `;
+                
+                return card;
+            }
+
+            filterProducts(searchTerm) {
+                searchTerm = searchTerm.toLowerCase();
+                this.filteredProducts = this.products.filter(product => 
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.description.toLowerCase().includes(searchTerm)
+                );
+                this.renderProducts();
+            }
+
+            sortProducts(criteria) {
+                switch(criteria) {
+                    case 'price-asc':
+                        this.filteredProducts.sort((a, b) => a.price - b.price);
+                        break;
+                    case 'price-desc':
+                        this.filteredProducts.sort((a, b) => b.price - a.price);
+                        break;
+                    case 'name-asc':
+                        this.filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+                        break;
+                    case 'name-desc':
+                        this.filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+                        break;
+                }
+                this.renderProducts();
+            }
+
+            setupEventListeners() {
+                const searchInput = document.getElementById('searchInput');
+                const sortFilter = document.getElementById('sortFilter');
+
+                searchInput.addEventListener('input', () => {
+                    this.filterProducts(searchInput.value);
+                });
+
+                sortFilter.addEventListener('change', () => {
+                    this.sortProducts(sortFilter.value);
+                });
+            }
+        }
+
+        // Initialize the store
+        const store = new JewelryStore(products);
+    </script>
+</body>
+</html>

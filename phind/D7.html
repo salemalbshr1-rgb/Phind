@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Advancement Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                            url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Studies Section */
+        .studies-section {
+            padding: 4rem 2rem;
+            background-color: #f8f9fa;
+        }
+
+        .studies-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .study-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .study-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .study-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .study-content {
+            padding: 1.5rem;
+        }
+
+        .study-title {
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 4rem 2rem;
+            background-color: #fff;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            margin-top: 1rem;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .hero-content {
+                padding: 1rem;
+            }
+            
+            .studies-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>Career Guide</h1>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#studies">Popular Studies</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Advance Your Career Today</h1>
+            <p>Discover the most in-demand fields and start your journey to success</p>
+            <a href="#studies" class="btn">Explore Popular Studies</a>
+        </div>
+    </section>
+
+    <!-- Studies Section -->
+    <section id="studies" class="studies-section">
+        <h2>Top Career Advancement Opportunities</h2>
+        <div class="studies-grid">
+            <article class="study-card">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f7" alt="Data Science" class="study-image">
+                <div class="study-content">
+                    <h3 class="study-title">Data Science & Analytics</h3>
+                    <p>Master data analysis, machine learning, and visualization techniques to drive business decisions.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </article>
+            
+            <article class="study-card">
+                <img src="https://images.unsplash.com/photo-1488590528505-98d2b5ab7480" alt="Web Development" class="study-image">
+                <div class="study-content">
+                    <h3 class="study-title">Full Stack Web Development</h3>
+                    <p>Build modern web applications using cutting-edge technologies and frameworks.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </article>
+            
+            <article class="study-card">
+                <img src="https://images.unsplash.com/photo-1515879216924-01c8b86ae656" alt="AI Engineering" class="study-image">
+                <div class="study-content">
+                    <h3 class="study-title">AI & Machine Learning Engineering</h3>
+                    <p>Design and implement intelligent systems that transform industries.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="resources" class="video-section">
+        <div class="video-container">
+            <h2>Expert Insights</h2>
+            <iframe width="100%" height="500" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Career Guide. All rights reserved.</p>
+        <nav>
+            <ul style="list-style: none; display: flex; gap: 2rem; justify-content: center; margin-top: 1rem;">
+                <li><a href="#home" style="color: white;">Home</a></li>
+                <li><a href="#studies" style="color: white;">Studies</a></li>
+                <li><a href="#contact" style="color: white;">Contact</a></li>
+            </ul>
+        </nav

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung Products</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Section */
+        .header {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 85, 164, 0.7), rgba(0, 85, 164, 0.7)),
+                        url('https://images.samsung.com/is/image/samsung/p6pim/ae/2023/smartphones/galaxy-s23-ultra-5g/hero/GS23_Ultra_Hero_01_2560x1440') center/cover no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .header-content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .header-content button {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .header-content button:hover {
+            background: white;
+            color: #0055A4;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0055A4;
+        }
+
+        /* Search and Filters */
+        .search-section {
+            padding: 2rem;
+            background: #f9f9f9;
+            margin: 2rem 0;
+        }
+
+        .search-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        #search-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .filter-select {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: white;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 2rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .buy-button {
+            padding: 0.8rem 1.5rem;
+            background: #0055A4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background: #003d82;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 2rem;
+            background: #f9f9f9;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0055A4;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .search-container {
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-content">
+            <h1>Samsung Products</h1>
+            <p>Experience the latest innovations from Samsung</p>
+            <button>Explore Now</button>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-logo">Samsung</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Search and Filters -->
+    <section class="search-section">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search products...">
+            <select class="filter-select">
+                <option value="all">All Products</option>
+                <option value="phones">Phones</option>
+                <option value="tv">TV & Audio</option>
+                <option value="laptops">Laptops</option>
+            </select>
+            <select class="filter-select">
+                <option value="newest">Newest First</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <h2>Latest Products</h2>
+        <div class="product-grid">
+            <!-- Galaxy S23 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.samsung.com/is/image/samsung/p6pim/ae/2023/smartphones/galaxy-s23-ultra-5g/hero/GS23_Ultra_Hero_01_2560x1440" alt="Galaxy S23 Ultra">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Galaxy S23 Ultra</h3>
+                    <p class="product-description">Experience the power of Samsung's latest flagship with advanced camera capabilities and long-lasting battery.</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Samsung 4K TV -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.samsung.com/is/image/samsung/p6pim/ae/2023/tvs/qled-4k/neo-qled-4k/hero/QN90B_Hero_01_2560x1440" alt="Samsung 4K TV">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Neo QLED 4K TV</h3>
+                    <p class="product-description">Immerse yourself in stunning 4K resolution with Samsung's advanced Neo QLED technology.</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Galaxy Book -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.samsung.com/is/image/samsung/p6pim/ae/2023/laptops/galaxy-book3-pro-360/hero/GB3_Pro_360_Hero_01_2560x1440" alt="Galaxy Book">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Galaxy Book3 Pro</h3>
+                    <p class="product-description">Experience seamless productivity with Samsung's latest laptop featuring Intel Core processors and long battery life.</p>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <h2>Latest Innovations</h2>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    title="Samsung Product Video" frameborder="0

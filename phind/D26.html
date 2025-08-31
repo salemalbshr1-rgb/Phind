@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .header {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/random/?manga,anime');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .header-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .popular-manga {
+            padding: 4rem 2rem;
+        }
+
+        .manga-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .manga-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .manga-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .manga-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .manga-info {
+            padding: 1rem;
+        }
+
+        .manga-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .read-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #ff4444;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .read-btn:hover {
+            background-color: #cc0000;
+        }
+
+        .video-section {
+            padding: 4rem 2rem;
+            background-color: #f5f5f5;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        iframe {
+            width: 100%;
+            height: 450px;
+            border-radius: 8px;
+        }
+
+        .search-bar {
+            position: fixed;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            z-index: 999;
+        }
+
+        #search-input {
+            padding: 0.8rem;
+            width: 300px;
+            border: 2px solid #ff4444;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">Manga Library</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#popular">Popular</a></li>
+                <li><a href="#latest">Latest</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="header">
+        <div class="header-content">
+            <h1>Welcome to Manga Library</h1>
+            <p>Discover thousands of manga titles in our collection</p>
+        </div>
+    </header>
+
+    <section class="popular-manga" id="popular">
+        <h2>Popular Manga</h2>
+        <div class="manga-grid">
+            <!-- Sample manga cards -->
+            <article class="manga-card">
+                <img src="https://source.unsplash.com/random/?manga,action" alt="Action Manga" class="manga-image">
+                <div class="manga-info">
+                    <h3 class="manga-title">Dragon Ball Z</h3>
+                    <p>A legendary warrior's journey to save Earth.</p>
+                    <a href="#" class="read-btn">Read Now</a>
+                </div>
+            </article>
+            <article class="manga-card">
+                <img src="https://source.unsplash.com/random/?manga,romance" alt="Romance Manga" class="manga-image">
+                <div class="manga-info">
+                    <h3 class="manga-title">Love Story</h3>
+                    <p>A heartwarming tale of young love.</p>
+                    <a href="#" class="read-btn">Read Now</a>
+                </div>
+            </article>
+            <article class="manga-card">
+                <img src="https://source.unsplash.com/random/?manga,fantasy" alt="Fantasy Manga" class="manga-image">
+                <div class="manga-info">
+                    <h3 class="manga-title">Magic Realm</h3>
+                    <p>Journey through magical worlds and adventures.</p>
+                    <a href="#" class="read-btn">Read Now</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search manga...">
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Manga Library. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling to navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('keyup', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            // Example search logic - replace with actual implementation
+            console.log(`Searching for: ${searchTerm}`);
+        });
+    </script>
+</body>
+</html>

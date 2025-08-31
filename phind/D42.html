@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CeraVe Products</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
+                            url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 400"><path fill="%23ffffff" d="M0,320L48,314.7C96,309,192,299,288,272C384,245,480,171,576,149.3C672,128,768,160,864,186.7C960,213,1056,235,1152,224C1248,213,1344,171,1392,133.3L1440,96L1440,320L1392,320C1344,320,1296,320,1248,320C1192,320,1120,320,1056,320C816,320,624,256,528,208C464,176,416,160,368,144C352,128,336,112,320,96C304,80,288,64,272,48C256,32,224,32,192,32C96,32,0,64,0,128L0,320Z"/></svg>');
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            color: #007bff;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        /* Filters Section */
+        .filters {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .filter-group label {
+            font-weight: bold;
+            min-width: 100px;
+        }
+
+        select, input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">CeraVe</div>
+            <ul class="nav-links">
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Expert Skincare Solutions</h1>
+            <p>Discover our dermatologist-recommended skincare products</p>
+            <button class="cta-button">Explore Products</button>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters">
+        <div class="filter-group">
+            <label for="sort-by">Sort By:</label>
+            <select id="sort-by">
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="name">Name A-Z</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label for="category">Category:</label>
+            <select id="category">
+                <option value="all">All Categories</option>
+                <option value="moisturizers">Moisturizers</option>
+                <option value="cleansers">Cleansers</option>
+                <option value="sunscreen">Sunscreen</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="search">Search:</label>
+            <input type="text" id="search" placeholder="Search products...">
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <main class="product-grid">
+        <!-- Sample product cards -->
+        <article class="product-card">
+            <div class="product-image">Product Image</div>
+            <div class="product-info">
+                <h3 class="product-title">CeraVe Moisturizing Cream</h3>
+                <p class="product-description">Rich, non-greasy moisturizer for dry skin</p>
+                <span class="product-price">$16.99</span>
+            </div>
+        </article>
+        <article class="product-card">
+            <div class="product-image">Product Image</div>
+            <div class="product-info">
+                <h3 class="product-title">CeraVe Hydrating Facial Cleanser</h3>
+                <p class="product-description">Gentle, effective facial cleanser</p>
+                <span class="product-price">$13.99</span>
+            </div>
+        </article>
+        <article class="product-card">
+            <div class="product-image">Product Image</div>
+            <div class="product-info">
+                <h3 class="product-title">CeraVe Sunscreen Lotion SPF 50</h3>
+                <p class="product-description">Broad Spectrum sun protection</p>
+                <span class="product-price">$19.99</span>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Dedicated to developing innovative skincare products</p>
+            </div>
+            <div class="footer-section footer-links">
+                <h3>Quick Links</h3>
+                <a href="#">Products</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: contact@cerave.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const sortBySelect = document.getElementById('sort-by');
+        const categorySelect = document.getElementById('category');
+        const searchInput = document.getElementById('search');
+
+        // Sample product data
+        const products = [
+            { id: 1, name: 'Moisturizing Cream', category: 'moisturizers', price: 16.99 },
+            { id: 2, name: 'Hydrating Facial Cleanser', category: 'cleansers', price: 13.99 },
+            { id: 3, name: 'Sunscreen Lotion SPF 50', category: 'sunscreen', price: 19.99 }
+        ];
+
+        // Filter and sort products
+        function updateProductDisplay() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedCategory = categorySelect.value;
+            const sortBy = sortBySelect.value;
+
+            let filteredProducts = [...products];
+
+            // Apply filters
+            if (selectedCategory !== 'all') {
+                filteredProducts = filteredProducts.filter(product => 
+                    product.category === selectedCategory);
+            }
+
+            if (searchTerm) {
+                filteredProducts}

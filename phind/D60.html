@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Comics Universe</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #3268BD; /* Captain America Blue */
+            --secondary-color: #FF0000; /* Iron Man Red */
+            --background-color: #1a1a1a;
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0.5)
+            ), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%233268BD" d="M0,96L80,128L160,149.3V272H0Z"/></svg>') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Character Cards */
+        .characters-grid {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .character-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .character-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .character-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .character-info {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .character-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Different Types of Buttons */
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #cc0000;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Image Filters Section */
+        .filters-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .filter-demo {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .filter-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(
+                90deg,
+                var(--primary-color),
+                var(--secondary-color)
+            );
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#characters">Characters</a></li>
+            <li><a href="#comics">Comics</a></li>
+            <li><a href="#movies">Movies</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <h1>Marvel Comics Universe</h1>
+    </header>
+
+    <main>
+        <section id="characters" class="characters-grid">
+            <!-- Character cards will be added dynamically -->
+        </section>
+
+        <section id="comics" class="filters-section">
+            <h2>Comic Book Art Styles</h2>
+            <div class="filter-demo">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' fill='%233268BD'/><circle cx='100' cy='100' r='50' fill='%23FF0000'/></svg>" alt="Filter Demo" class="filter-image">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' fill='%233268BD'/><circle cx='100' cy='100' r='50' fill='%23FF0000'/></svg>" alt="Filter Demo" class="filter-image">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Marvel Comics Fan Site</p>
+    </footer>
+
+    <script>
+        // Add smooth scrolling to navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Create character cards dynamically
+        const charactersData = [
+            { name: 'Iron Man', description: 'Genius billionaire philanthropist' },
+            { name: 'Captain America', description: 'Star-spangled man with a plan' },
+            { name: 'Thor', description: 'God of Thunder' }
+        ];
+
+        const charactersGrid = document.querySelector('.characters-grid');
+        
+        charactersData.forEach(character => {
+            const card = document.createElement('div');
+            card.className = 'character-card';
+            
+            card.innerHTML = `
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 300'><rect width='200' height='300' fill='%233268BD'/></svg>" alt="${character.name}">
+                <div class="character-info">
+                    <h3 class="character-name">${character.name}</h3>
+                    <p>${character.description}</p>
+                    <div class="btn-container">
+                        <button class="btn-primary">Learn More</button>
+                        <button class="btn-secondary">Add to Collection</button>
+                    </div>
+                </div>
+            `;
+            
+            charactersGrid.appendChild(card);
+        });
+
+        // Add filter effects to images
+        const filterImages = document.querySelectorAll('.filter-image');
+        
+        filterImages.forEach((image, index) => {
+            switch(index % 3) {
+                case 0:
+                    image.style.filter = 'grayscale(100%)';
+                    break;
+                case 1:
+                    image.style.filter = 'sepia(100%)';
+                    break;
+                case 2:
+                    image.style.filter = 'contrast(150%) brightness(110%)';
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Single-Page Website</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* Navigation styles */
+        nav {
+            background: #333;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        /* Main content styles */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Media player styles */
+        .media-player {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+        }
+
+        .captions {
+            background: black;
+            color: white;
+            padding: 1rem;
+            margin-top: -4px;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip navigation -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav role="navigation" aria-label="Main navigation">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main id="main-content">
+        <section id="home" role="region" aria-label="Home section">
+            <h1>Welcome to Our Accessible Website</h1>
+            
+            <!-- Video with captions -->
+            <article class="media-player">
+                <h2>Introduction Video</h2>
+                <div class="video-container">
+                    <video controls width="640" height="360" aria-describedby="video-description">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        <track kind="captions" srcLang="en" src="captions.vtt" label="English Captions">
+                        <div id="video-description" class="visually-hidden">
+                            This video demonstrates our company's mission and values.
+                        </div>
+                    </video>
+                    <div class="captions" aria-live="polite">
+                        <!-- Captions will be displayed here -->
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section id="about" role="region" aria-label="About section">
+            <h2>About Us</h2>
+            <p>We're committed to accessibility and inclusive design.</p>
+        </section>
+
+        <section id="services" role="region" aria-label="Services section">
+            <h2>Our Services</h2>
+            <p>Learn about what we offer.</p>
+        </section>
+
+        <section id="contact" role="region" aria-label="Contact section">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us today!</p>
+        </section>
+    </main>
+
+    <script>
+        // Initialize video player with captions
+        const video = document.querySelector('video');
+        const captionsDiv = document.querySelector('.captions');
+
+        // Load captions
+        fetch('captions.vtt')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new WebVTT.Parser();
+                parser.oncue = function(cue) {
+                    setTimeout(() => {
+                        captionsDiv.textContent = cue.text;
+                    }, cue.startTime);
+                    
+                    setTimeout(() => {
+                        captionsDiv.textContent = '';
+                    }, cue.endTime);
+                };
+                parser.parse(data);
+            })
+            .catch(error => console.error('Error loading captions:', error));
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        // Remove keyboard focus indicator class when mouse is used
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-navigation');
+        });
+    </script>
+</body>
+</html>

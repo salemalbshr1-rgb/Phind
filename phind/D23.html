@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Website</title>
+    <style>
+        /* Base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Navigation bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        /* Main content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Video section */
+        .video-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            margin-bottom: 1rem;
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Weather forecast section */
+        .weather-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        input[type="text"] {
+            padding: 0.5rem;
+            width: 100%;
+            max-width: 300px;
+            border: none;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #004080;
+        }
+
+        /* Footer */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1>Interactive Website</h1>
+        <div class="nav-links">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#video" class="nav-link">Video</a>
+            <a href="#weather" class="nav-link">Weather</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section id="home">
+            <h2>Welcome to Our Interactive Website</h2>
+            <p>This website demonstrates various features including navigation, videos, and weather forecasts.</p>
+        </section>
+
+        <!-- Video Section -->
+        <section id="video" class="video-section">
+            <h2>Video Gallery</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p>Watch our featured video above. You can replace this with any YouTube video by changing the iframe source URL.</p>
+        </section>
+
+        <!-- Weather Forecast Section -->
+        <section id="weather" class="weather-section">
+            <h2>Weather Forecast</h2>
+            <div class="input-group">
+                <input type="text" id="cityInput" placeholder="Enter city name">
+                <button onclick="getWeather()">Get Weather</button>
+            </div>
+            <div id="weatherResult"></div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Interactive Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Weather forecast functionality
+        function getWeather() {
+            const city = document.getElementById('cityInput').value;
+            const weatherResult = document.getElementById('weatherResult');
+            
+            // Simulate API response (in a real application, you'd make an API call here)
+            const mockResponse = {
+                temperature: Math.floor(Math.random() * 30),
+                condition: ['Sunny', 'Cloudy', 'Rainy'][Math.floor(Math.random() * 3)],
+                humidity: Math.floor(Math.random() * 100)
+            };
+
+            weatherResult.innerHTML = `
+                <h3>Weather in ${city}</h3>
+                <p>Temperature: ${mockResponse.temperature}°C</p>
+                <p>Condition: ${mockResponse.condition}</p>
+                <p>Humidity: ${mockResponse.humidity}%</p>
+            `;
+        }
+
+        // Add smooth scrolling to navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('href');
+                document.querySelector(sectionId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

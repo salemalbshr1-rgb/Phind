@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Products</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        /* Navigation */
+        nav {
+            background: #fff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav ul li {
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #2196F3;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('https://source.unsplash.com/random/?pixel-phone');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+
+        /* Products Grid */
+        .products-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        select, input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: url('https://source.unsplash.com/random/?pixel-phone');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            color: #2196F3;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        footer div {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        footer h3 {
+            margin-bottom: 1rem;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Pixel Store</div>
+        <ul class="main-nav">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Experience Pixel Perfection</h1>
+        <p>Innovative technology for modern life</p>
+    </header>
+
+    <main>
+        <section id="products" class="products-container">
+            <div class="filters">
+                <select id="sortBy">
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="name-asc">Name: A-Z</option>
+                    <option value="name-desc">Name: Z-A</option>
+                </select>
+                <input type="text" id="searchInput" placeholder="Search products...">
+            </div>
+
+            <div class="product-grid" id="productGrid"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <div>
+                <h3>About Us</h3>
+                <p>We're passionate about creating innovative Pixel products that enhance your digital lifestyle.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>Email: support@pixelstore.com</li>
+                    <li>Phone: +1 (555) 123-4567</li>
+                    <li>Address: 123 Tech Drive, Silicon Valley</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample product data
+        const products = [
+            { id: 1, name: 'Pixel 7 Pro', price: 899, category: 'Phones' },
+            { id: 2, name: 'Pixel Watch', price: 349, category: 'Accessories' },
+            { id: 3, name: 'Pixel Buds Pro', price: 199, category: 'Audio' },
+            { id: 4, name: 'Pixel Tablet', price: 599, category: 'Tablets' },
+            { id: 5, name: 'Pixel Stand', price: 79, category: 'Accessories' },
+            { id: 6, name: 'Pixel Case', price: 49, category: 'Cases' }
+        ];
+
+        function renderProducts(filteredProducts) {
+            const productGrid = document.getElementById('productGrid');
+            productGrid.innerHTML = '';
+
+            filteredProducts.forEach(product => {
+                const card = document

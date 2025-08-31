@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Solutions - Professional IT Services</title>
+    <style>
+        /* CSS Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('datacenter.jpg');
+            background-size: cover;
+        }
+
+        .hero-content {
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #0056b3;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 4rem 2rem;
+            background: #fff;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #333;
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">IT Solutions</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Transform Your Business with Our IT Solutions</h1>
+            <p>Expert IT services for modern businesses</p>
+            <button class="cta-button">Get Started</button>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="service-card">
+            <img src="cybersecurity.jpg" alt="Cybersecurity Services">
+            <h2>Cybersecurity</h2>
+            <p>Protect your business from cyber threats with our comprehensive security solutions.</p>
+        </div>
+        <div class="service-card">
+            <img src="cloud.jpg" alt="Cloud Services">
+            <h2>Cloud Solutions</h2>
+            <p>Scalable cloud infrastructure for your growing business needs.</p>
+        </div>
+        <div class="service-card">
+            <img src="network.jpg" alt="Network Services">
+            <h2>Network Solutions</h2>
+            <p>Reliable network infrastructure and management services.</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="project1.jpg" alt="Project 1">
+            </div>
+            <div class="portfolio-item">
+                <img src="project2.jpg" alt="Project 2">
+            </div>
+            <div class="portfolio-item">
+                <img src="project3.jpg" alt="Project 3">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-form">
+            <h2>Get in Touch</h2>
+            <form action="process.php" method="POST">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Phone: 555-555-5555</p>
+                <p>Email: contact@itsolutions.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Form validation
+            const form = document.querySelector('form');
+            const nameInput = document.querySelector('#name');
+            const emailInput = document.querySelector('#email');
+            const messageInput = document.querySelector('#message');
+
+            function validateForm() {
+                let isValid = true;
+
+                if (nameInput.value.trim() === '') {
+                    isValid = false;
+                    nameInput.style.borderColor = 'red';
+                } else {
+                    nameInput.style.borderColor = '';
+                }
+
+                if (!emailInput.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                    isValid = false;
+                    emailInput.style.borderColor = 'red';
+                } else {
+                    emailInput.style.borderColor = '';
+                }
+
+                if (messageInput.value.trim() === '') {
+                    isValid = false;
+                    messageInput.style.borderColor = 'red';
+                } else {
+                    messageInput.style.borderColor = '';
+                }
+
+                return isValid;
+            }
+
+            form.addEventListener('submit', (e) => {
+                if (!validateForm()) {
+                    e.preventDefault();
+                    alert('Please fill in all fields correctly.');
+                }
+            });
+
+            // Input validation on blur
+            [nameInput, emailInput, messageInput].forEach(input => {
+                input.addEventListener('blur', () => {
+                    if (input.id === 'email' && input.value !== '') {
+                        if (!input.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                            input.style.borderColor = 'red';
+                        } else {
+                            input.style.borderColor = '';
+                        }
+                    } else if (input.value.trim() === '') {
+                        input.style.borderColor = 'red';
+                    } else {
+                        input.style.borderColor = '';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

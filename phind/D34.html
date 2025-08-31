@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewelry Store</title>
+    <style>
+        /* Base styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Navigation styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #007bff;
+        }
+
+        /* Hero section */
+        .hero {
+            height: 80vh;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                            url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+        }
+
+        /* Products section */
+        .products-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-title {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        .product-price {
+            color: #007bff;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Search and filter */
+        .search-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        select {
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Contact form */
+        .contact-form {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div>
+            <h1>Luxury Jewelry Collections</h1>
+            <p>Experience the finest craftsmanship and timeless elegance</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products-container">
+        <div class="search-filter">
+            <input type="text" class="search-input" placeholder="Search products...">
+            <select id="sort-select">
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="name">Name: A-Z</option>
+            </select>
+        </div>
+
+        <div class="product-grid">
+            <!-- Product cards will be inserted here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    title="Company Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact">
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" rows="4" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">FAQ</a>
+        </div>
+        <p>&copy; 2025 Luxury Jewelry Store</p>
+    </footer>
+
+    <script>
+        // Sample product data
+        const products = [
+            { id: 1, name: 'Diamond Necklace', price: 999, image: 'https://via.placeholder.com/300x250' },
+            { id: 2, name: 'Gold Earrings', price: 299, image: 'https://via.placeholder.com/300x250' },
+            { id: 3, name: 'Ruby Ring', price: 599, image: 'https://via.placeholder.com/300x250' },
+            { id: 4, name: 'Silver Watch', price: 499, image: 'https://via.placeholder.com/300x250' }
+        ];
+
+        // Initialize product grid
+        function initializeProducts() {
+            const productGrid = document.querySelector('.product-grid');
+            
+            products.forEach(product => {
+                const card = `
+                    <div class="product-card">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-price">$${product.price}</p>
+                            <button>Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+                productGrid.insertAdjacentHTML('beforeend', card);
+            });
+        }
+
+        // Search functionality
+        document.querySelector('.search-input').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            filterProducts(searchTerm);
+        });
+
+        // Sort functionality
+        document.getElementById('sort-select').addEventListener('change', (e) => {
+            const sortValue = e.target.value;
+            sortProducts(sortValue);
+        });
+
+        // Filter products based on search term
+        function filterProducts(term) {
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                const title = card.querySelector('.product-title').textContent.toLowerCase();
+                card.style.display = title.includes(term) ? 'block' : 'none';
+            });
+        }
+
+        // Sort products based on selected criteria
+        function sortProducts(criteria) {
+            const productGrid = document.querySelector('.product-grid');
+            let sortedProducts;
+
+            switch(criteria) {
+                case 'price-asc':
+                    sortedProducts = [...products].sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-desc':
+                    sortedProducts = [...products].sort((a, b) => b.price - a.price);
+                    break;
+                case 'name':
+                    sortedProducts = [...products].sort((a, b) => 
+                        a.name.localeCompare(b.name));
+                    break;
+            }
+
+            productGrid.innerHTML = '';
+            sortedProducts.forEach(product => {
+                const card = `
+                    <div class="product-card">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-price">$${product.price}</p>
+                            <button>Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+                productGrid.insertAdjacentHTML('beforeend', card);
+            });
+        }
+
+        // Contact form submission handler
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will contact you soon.');
+            e.target.reset();
+        });
+
+        // Initialize the products grid when the page loads
+        document.addEventListener('DOMContentLoaded', initializeProducts);
+    </script>
+</body>
+</html>

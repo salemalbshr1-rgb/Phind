@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung Products</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #000;
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1588776996192-95d42b317cdc');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .product-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Search and Filter */
+        .filters {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        input[type="text"],
+        select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .filters {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <nav>
+            <div class="logo">Samsung</div>
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Innovation That Inspires</h1>
+        <p>Experience the latest Samsung innovations</p>
+        <button class="cta-btn">Explore Now</button>
+    </section>
+
+    <!-- Product Filter Section -->
+    <section class="filters">
+        <input type="text" id="searchInput" placeholder="Search products...">
+        <select id="sortBy">
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="newest">Newest First</option>
+        </select>
+        <select id="category">
+            <option value="all">All Categories</option>
+            <option value="mobile">Mobile</option>
+            <option value="tv">TV</option>
+            <option value="laptop">Laptops</option>
+        </select>
+    </section>
+
+    <!-- Product Grid -->
+    <main class="product-grid" id="productGrid"></main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Samsung Electronics Co., Ltd.</p>
+        <ul class="social-links">
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        // Sample product data
+        const products = [
+            {
+                id: 1,
+                name: 'Galaxy S23 Ultra',
+                price: 899,
+                category: 'mobile',
+                image: 'https://via.placeholder.com/300x300?text=Galaxy+S23',
+                description: 'Flagship smartphone with advanced camera'
+            },
+            {
+                id: 2,
+                name: 'QLED 4K TV',
+                price: 1299,
+                category: 'tv',
+                image: 'https://via.placeholder.com/300x300?text=QLED+TV',
+                description: 'Premium smart television'
+            },
+            {
+                id: 3,
+                name: 'Book Pro Laptop',
+                price: 799,
+                category: 'laptop',
+                image: 'https://via.placeholder.com/300x300?text=Laptop',
+                description: 'Powerful portable computing solution'
+            }
+        ];
+
+        function renderProducts(filteredProducts) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+
+            filteredProducts.forEach(product => {
+                const card = document.createElement('article');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="card-content">
+                        <h3>${product.name}</h3>
+                        <p>$${product.price}</p>
+                        <p>${product.description}</p>
+                        <button>Add to Cart</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterAndSortProducts(searchTerm, sortBy, category) {
+            let filtered = [...products];
+
+            if (category !== 'all') {
+                filtered = filtered.filter(p => p.category === category);
+            }
+
+            if (searchTerm) {
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    p.description.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            }
+
+            switch(sortBy) {
+                case 'price-asc':
+                    filtered.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-desc':
+                    filtered.sort((a, b) => b.price - a.price);
+                    break;
+                case 'newest':
+                    filtered.sort((a, b) => b.id - a.id);
+                    break;
+            }
+
+            return filtered;
+        }
+
+        // Event Listeners
+        document.getElementById('searchInput').addEventListener('input', () => {
+            const searchTerm = document.getElementById('searchInput').value;
+            const sortBy = document.getElementById('sortBy').value;
+            const category = document.getElementById('category').value;
+            
+            const filtered = filterAndSortProducts(searchTerm, sortBy, category);
+            renderProducts(filtered);
+        });
+
+        document.getElementById('sortBy').addEventListener('change', () => {
+            const searchTerm = document.getElementById('searchInput').value;
+            const sortBy = document.getElementById('sortBy').value;
+            const category = document.getElementById('category').value;
+            
+            const filtered = filterAndSortProducts(searchTerm, sortBy, category);
+            renderProducts(filtered);
+        });
+
+        document.getElementById('category').addEventListener('change', () => {
+            const searchTerm = document.getElementById('searchInput').value;
+            const sortBy = document.getElementById('sortBy').value;
+            const category = document.getElementById('category').value;
+            
+            const filtered = filterAndSortProducts(searchTerm, sortBy, category);
+            renderProducts(filtered);
+        });
+
+        // Initial render
+        renderProducts(products);
+    </script>
+</body>
+</html>

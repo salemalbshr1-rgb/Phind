@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung Phones & Accessories</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: #000;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar nav a:hover {
+            color: #00f;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.samsung.com/is/image/samsung/p6pim/ae/galaxy-s23-ultra-5g/S223_Large_KV_01_221104_M01_01_001_001.jpg?$CM_GALLERY_L');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero button {
+            background: #00f;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .hero button:hover {
+            background: #007bff;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 2rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .product-card h3 {
+            margin: 1rem 0;
+        }
+
+        .product-card p {
+            color: #666;
+            margin: 1rem 0;
+        }
+
+        .product-card button {
+            background: #00f;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .product-card button:hover {
+            background: #007bff;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background: #00f;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .contact-form button:hover {
+            background: #007bff;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            color: #fff;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">Samsung</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#phones">Phones</a></li>
+                <li><a href="#accessories">Accessories</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Galaxy Series</h1>
+        <p>Experience the latest in mobile technology</p>
+        <button>Explore Now</button>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="phones">
+        <h2>Latest Samsung Phones</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://images.samsung.com/is/image/samsung/p6pim/ae/galaxy-s23-ultra-5g/S223_Large_KV_01_221104_M01_01_001_001.jpg?$CM_GALLERY_L" alt="Samsung Galaxy S23 Ultra">
+                <h3>Galaxy S23 Ultra</h3>
+                <p>5G ready with advanced camera system</p>
+                <button>Buy Now</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.samsung.com/is/image/samsung/p6pim/ae/galaxy-s23-ultra-5g/S223_Large_KV_01_221104_M01_01_001_001.jpg?$CM_GALLERY_L" alt="Samsung Galaxy S23+">
+                <h3>Galaxy S23+</h3>
+                <p>Powerful performance with long battery life</p>
+                <button>Buy Now</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.samsung.com/is/image/samsung/p6pim/ae/galaxy-s23-ultra-5g/S223_Large_KV_01_221104_M01_01_001_001.jpg?$CM_GALLERY_L" alt="Samsung Galaxy S23">
+                <h3>Galaxy S23</h3>
+                <p>Compact design with premium features</p>
+                <button>Buy Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-form">
+            <form>
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h3>Samsung Electronics</h3>
+        <p>© 2025 Samsung. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission handling
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will contact you soon.');
+        });
+    </script>
+</body>
+</html>

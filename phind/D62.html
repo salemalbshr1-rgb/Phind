@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Website</title>
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav__container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav__logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .nav__links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav__link {
+            text-decoration: none;
+            color: #2c3e50;
+            transition: color 0.3s ease;
+        }
+
+        .nav__link:hover {
+            color: #3498db;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1920');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero__content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero__heading {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 8rem 2rem;
+            background-color: #f9f9f9;
+        }
+
+        .section__heading {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            color: #2c3e50;
+        }
+
+        .menu__items {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu__item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .menu__item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu__name {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .menu__price {
+            color: #3498db;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 2rem;
+        }
+
+        .about__content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about__text {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .about__image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 2rem;
+            background-color: #3498db;
+            color: white;
+        }
+
+        .contact__form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form__group {
+            margin-bottom: 2rem;
+        }
+
+        .form__label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form__input,
+        .form__textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255,255,255,0.9);
+        }
+
+        .form__button {
+            background-color: #2980b9;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form__button:hover {
+            background-color: #2573a7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav__container">
+            <h1 class="nav__logo">Restaurant Name</h1>
+            <ul class="nav__links">
+                <li><a href="#home" class="nav__link">Home</a></li>
+                <li><a href="#menu" class="nav__link">Menu</a></li>
+                <li><a href="#about" class="nav__link">About</a></li>
+                <li><a href="#contact" class="nav__link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero__content">
+            <h1 class="hero__heading">Welcome to Our Restaurant</h1>
+            <p>Experience the finest dining with us</p>
+            <a href="#menu" class="btn">View Menu</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <h2 class="section__heading">Our Menu</h2>
+        <div class="menu__items">
+            <article class="menu__item">
+                <h3 class="menu__name">Signature Burger</h3>
+                <p>A premium beef burger with caramelized onions and cheddar cheese</p>
+                <span class="menu__price">$19.99</span>
+            </article>
+            <article class="menu__item">
+                <h3 class="menu__name">Seafood Pasta</h3>
+                <p>Fresh seafood mixed with garlic shrimp and linguine pasta</p>
+                <span class="menu__price">$29.99</span>
+            </article>
+            <article class="menu__item">
+                <h3 class="menu__name">Grilled Steak</h3>
+                <p>Prime ribeye steak served with roasted vegetables</p>
+                <span class="menu__price">$34.99</span>
+            </article>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about__content">
+            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80" alt="Restaurant Interior" class="about__image">
+            <div class="about__text">
+                <h2 class="section__heading">About Us</h2>
+                <p>We pride ourselves on serving high-quality dishes made with fresh ingredients. Our chefs have decades of combined experience in preparing international cuisine with a modern twist.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section__heading">Get in Touch</h2>
+        <form action="#" class="contact__form">
+            <div class="form__group">
+                <label for="name" class="form__label">Name:</label>
+                <input type="text" id="name" class="form__input" required>
+            </div>
+            <div class="form__group">
+                <label for="email" class="form__label">Email:</label>
+                <input type="email" id="email" class="form__input" required>
+            </div>
+            <div class="form__group">
+                <label for="message" class="form__label">Message:</label>
+                <textarea id="message" class="form__textarea" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="form__button">Send Message</button>
+        </form>
+    </section>
+
+    <script>
+        // Smooth scrolling navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission handling
+        const contactForm = document.querySelector('.contact__form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the data to a server
+            alert('Thank you for your message! We will get back to you soon.');
+            
+            // Reset the form
+            this.reset();
+        });
+    </script>
+</body>
+</html>

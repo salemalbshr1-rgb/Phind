@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Made Products</title>
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #ff7eb3;
+            --secondary-color: #ff65a3;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --card-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Header */
+        header {
+            height: 80vh;
+            background-image: url('https://source.unsplash.com/1600x900/?flowers,nature');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Products section */
+        .products-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        select, input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            aspect-ratio: 4/3;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-video {
+            width: 100%;
+            height: 180px;
+            background: #000;
+            margin-top: 1rem;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .product-description {
+            margin-bottom: 1rem;
+            min-height: 60px;
+        }
+
+        .buy-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .buy-button:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header id="home">
+        <h1>Flower Made Products</h1>
+        <p>Natural beauty crafted with love</p>
+    </header>
+
+    <!-- Products section -->
+    <section id="products" class="products-container">
+        <div class="filters">
+            <select id="category-filter">
+                <option value="">All Categories</option>
+                <option value="cosmetics">Cosmetics</option>
+                <option value="decorative">Decorative</option>
+                <option value="food">Food</option>
+            </select>
+            <input type="text" id="search-input" placeholder="Search products...">
+        </div>
+
+        <div class="product-grid" id="product-grid"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Flower Made Products. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Product data
+        const products = [
+            {
+                id: 1,
+                category: 'cosmetics',
+                name: 'Rose Face Cream',
+                price: '$45.99',
+                description: 'Natural rose extract face cream for glowing skin.',
+                image: 'https://source.unsplash.com/400x300/?rose'
+            },
+            {
+                id: 2,
+                category: 'decorative',
+                name: 'Flower Wreath',
+                price: '$69.99',
+                description: 'Handcrafted flower wreath for home decoration.',
+                image: 'https://source.unsplash.com/400x300/?wreath'
+            },
+            {
+                id: 3,
+                category: 'cosmetics',
+                name: 'Lavender Oil',
+                price: '$29.99',
+                description: 'Pure lavender essential oil for aromatherapy.',
+                image: 'https://source.unsplash.com/400x300/?lavender'
+            },
+            {
+                id: 4,
+                category: 'food',
+                name: 'Rose Petal Tea',
+                price: '$39.99',
+                description: 'Premium rose petal tea blend.',
+                image: 'https://source.unsplash.com/400x300/?tea'
+            }
+        ];
+
+        // Initialize products
+        function initializeProducts() {
+            const grid = document.getElementById('product-grid');
+            
+            products.forEach(product => {
+                const card = `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-title">${product.name}</h2>
+                            <p class="product-price">${product.price}</p>
+                            <p class="product-description">${product.description}</p>
+                            <button class="buy-button">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+                grid.insertAdjacentHTML('beforeend', card);
+            });
+        }
+
+        // Filtering functionality
+        function setupFilters() {
+            const categoryFilter = document.getElementById('category-filter');
+            const searchInput = document.getElementById('search-input');
+
+            categoryFilter.addEventListener('change', () => filterProducts());
+            searchInput.addEventListener('input', () => filterProducts());
+        }
+
+        function filterProducts() {
+            const category = document.getElementById('category-filter').value.toLowerCase();
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const grid = document.getElementById('product-grid');
+            let filteredProducts;
+
+            if (category && searchTerm) {
+                filteredProducts = products.filter(product =>
+                    product.category.includes(category) &&
+                    (product.name.toLowerCase().includes(searchTerm) ||
+                     product.description.toLowerCase().includes(searchTerm))
+                );
+            } else if (category) {
+                filteredProducts = products.filter(product =>
+                    product.category.includes(category)
+                );
+            } else if (searchTerm) {
+                filteredProducts = products.filter(product =>
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.description.toLowerCase().includes(searchTerm)
+                );
+            } else {
+                filteredProducts = products;
+            }
+
+            grid.innerHTML = '';
+            filteredProducts.forEach(product => {
+                const card = `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-title">${product.name}</h2>
+                            <p class="product-price">${product.price}</p>
+                            <p class="product-description">${product.description}</p>
+                            <button class="buy-button">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+                grid.insertAdjacentHTML('beforeend', card);
+            });
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeProducts();
+            setupFilters();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Music for Everyone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1499346030926-9a72daac6c63?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWVkaWEtcGxhY2Vyc3xlbnw0MDB8MHx8fGVufDB8fA%3D%3E&auto=format&fit=crop&w=1500&q=60');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            padding: 20px;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: #1db954;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1db954;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 15vh;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            background-color: #1db954;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .features-section {
+            padding: 4rem 2rem;
+            background-color: #f8f9fa;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .video-section {
+            background-color: black;
+            padding: 4rem 2rem;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        iframe {
+            width: 100%;
+            height: 450px;
+            border-radius: 10px;
+        }
+
+        .search-section {
+            padding: 4rem 2rem;
+            background-color: #fff;
+        }
+
+        .search-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Spotify</div>
+            <div class="nav-links">
+                <a href="#premium">Premium</a>
+                <a href="#support">Support</a>
+                <a href="#download">Download</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-bg">
+        <div class="hero-content">
+            <h1 class="hero-title">Music for Everyone</h1>
+            <p>Millions of songs and podcasts. No credit card needed.</p>
+            <button class="cta-button">Get Spotify Free</button>
+        </div>
+    </header>
+
+    <section class="features-section">
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h2>Discover New Music</h2>
+                <p>Find your perfect mix with personalized playlists.</p>
+            </div>
+            <div class="feature-card">
+                <h2>Play Anywhere</h2>
+                <p>Listen across all your devices.</p>
+            </div>
+            <div class="feature-card">
+                <h2>Unlimited Skips</h2>
+                <p>Control your music experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    frameborder="0" 
+                    allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section class="search-section">
+        <div class="search-form">
+            <form id="musicSearchForm">
+                <div class="form-group">
+                    <label for="searchType">What would you like to search?</label>
+                    <select id="searchType" name="searchType">
+                        <option value="tracks">Tracks</option>
+                        <option value="artists">Artists</option>
+                        <option value="albums">Albums</option>
+                        <option value="playlists">Playlists</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="searchQuery">Enter your search:</label>
+                    <input type="text" id="searchQuery" name="searchQuery">
+                </div>
+                <button type="submit" class="cta-button">Search Music</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-links">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Jobs</a></li>
+                    <li><a href="#">For the Record</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Communities</h3>
+                <ul>
+                    <li><a href="#">For Artists</a></li>
+                    <li><a href="#">Developers</a></li>
+                    <li><a href="#">Advertising</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Web Player</a></li>
+                    <li><a href="#">Free Mobile App</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('musicSearchForm');
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const searchType = document.getElementById('searchType').value;
+                const searchQuery = document.getElementById('searchQuery').value.trim();
+                
+                if (!searchQuery) {
+                    alert('Please enter a search term');
+                    return;
+                }
+                
+                // Here you could implement actual API calls
+                console.log(`Searching ${searchType}: ${searchQuery}`);
+            });
+        });
+
+        // Add smooth scrolling to navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

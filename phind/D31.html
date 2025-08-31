@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanStyle Clothing Co.</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0066cc;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1513519245088-0e12902e35a6?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+
+        /* Product Showcase */
+        .products {
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* Video Lookbook */
+        .lookbook {
+            padding: 2rem;
+            background: #333;
+            color: white;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 2rem;
+            background: #0066cc;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        /* Buttons */
+        .btn {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #0052a3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>UrbanStyle</h1>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#lookbook">Lookbook</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>UrbanStyle Clothing Co.</h1>
+            <p>Experience the latest in fashion</p>
+            <button class="btn">Shop Now</button>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="products" id="products">
+        <h2>Latest Collections</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-16061007571980904-0e12902e35a6?auto=format&fit=crop&w=800&q=80" 
+                     alt="Summer Collection" class="product-image">
+                <h3>Summer Collection</h3>
+                <p>Lightweight fabrics for warm weather</p>
+                <button class="btn">View Collection</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-16061007571980904-0e12902e35a6?auto=format&fit=crop&w=800&q=80" 
+                     alt="Winter Collection" class="product-image">
+                <h3>Winter Collection</h3>
+                <p>Warm and cozy designs</p>
+                <button class="btn">View Collection</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Lookbook -->
+    <section class="lookbook" id="lookbook">
+        <h2>Video Lookbook</h2>
+        <div class="video-container">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    title="UrbanStyle Clothing Co. - Lookbook" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact" id="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-form">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for exclusive offers</p>
+        <div class="newsletter-form">
+            <form id="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // DOMContentLoaded ensures all elements are loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth Scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Form Handling
+            const contactForm = document.getElementById('contact-form');
+            const newsletterForm = document.getElementById('newsletter-form');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Message sent successfully!');
+                contactForm.reset();
+            });
+
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for subscribing!');
+                newsletterForm.reset();
+            });
+
+            // Responsive Navigation
+            const navLinks = document.querySelector('.nav-links');
+            const nav = document.querySelector('.navbar');
+
+            // Add hamburger menu for mobile
+            const hamburger = document.createElement('button');
+            hamburger.innerHTML = '☰';
+            hamburger.style.fontSize = '24px';
+            hamburger.style.background = 'none';
+            hamburger.style.border = 'none';
+            hamburger.style.cursor = 'pointer';
+            hamburger.style.padding = '1rem';
+            
+            nav.insertBefore(hamburger, navLinks);
+
+            hamburger.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+        });
+    </script>
+</body>
+</html>
